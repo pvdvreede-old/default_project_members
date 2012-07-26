@@ -22,9 +22,6 @@ module DefaultProjectMembers
 				default_members = DefaultProjectMember.all
 				default_members.each do |m|
 					member = Member.new( :role_ids => [m.role_id], :user_id => m.user_id, :project_id => self.id )			
-					if not member.save
-						raise "member didnt save #{self.id} #{self.members} members: #{m.role_id} #{m.user_id}"
-					end
 					self.members << member
 				end
 			end
